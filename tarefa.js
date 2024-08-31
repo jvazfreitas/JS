@@ -1,50 +1,32 @@
-// 
+const taxaDeCambio = {
+  USD: 1,      // Dólar Americano (moeda base)
+  EUR: 0.93,   // Euro
+  JPY: 148.89, // Iene Japonês
+  GBP: 0.82,   // Libra Esterlina
+  CAD: 1.36    // Dólar Canadense
+};
+function converterEAlertar(valor, deMoeda) {
+  // Verifica se a moeda base está presente nas taxas de câmbio
+  if (!taxaDeCambio[deMoeda]) {
+    alert('Moeda base desconhecida.');
+    return;
+  }
+  const moedasAlvo = ['EUR', 'JPY', 'GBP', 'CAD'];
 
-function converterUSDtoBRL(valorUSD, taxaDeCambio){
-
-    const valorBRL = valorUSD * taxaDeCambio;
-    return valorBRL;
-}
-const valorEmUSD = Number(prompt('Digite um Valor')); // Valor em USD
-const taxaDeCambioAtual = 5.55; // (USD to BRL)
-
-    const valorEmBRL = converterUSDtoBRL(valorEmUSD, taxaDeCambioAtual);
-    console.log(`U$${valorEmUSD} USD é equivalente a R$${valorEmBRL.toFixed(2)} BRL.`);
-
-// 
-
-function calcularICMS(valorOperacao, aliquota) {
-    // Convertemos a alíquota de percentual para decimal
-    var aliquotaDecimal = aliquota / 100;
+  moedasAlvo.forEach(paraMoeda => {
+    if (!taxaDeCambio[paraMoeda]) {
+      alert(`Moeda de destino desconhecida: ${paraMoeda}`);
+      return;
+    }
+    const valorEmMoedaBase = valor / taxaDeCambio[deMoeda];
+    const valorConvertido = valorEmMoedaBase * taxaDeCambio[paraMoeda];
     
-    // Calculamos o valor do ICMS
-    var icms = valorOperacao * aliquotaDecimal;
-    
-    // Retorna o valor do ICMS
-    return icms;
+    alert(`${valor} ${deMoeda} é igual a ${valorConvertido} ${paraMoeda}`);
+  });
 }
 
-// Exemplos de uso
-var valorDaOperacao = 1000; // Valor total da mercadoria ou serviço
-var aliquotaICMS = 18; // Alíquota do ICMS (exemplo: 18%)
+const valor = Number(prompt('digite um valor')); // Quantidade em moeda base
+const deMoeda = 'USD'; // Moeda base
 
-// Calcula o ICMS
-var valorICMS = calcularICMS(valorDaOperacao, aliquotaICMS);
-
-// Exibe o resultado no console
-console.log("O valor do ICMS é R$ " + (valorICMS));
-
-// 
-
-function saoMultiplos(numero1, numero2) {
-    // Verifica se o número1 é múltiplo de numero2
-    return numero1 % numero2 === 0;
-}
-const num1 = Number(prompt('digite um numero'));
-const num2 = Number(prompt('digie outro numero'));
-
-if (saoMultiplos(num1, num2)) {
-    alert(`é múltiplo`);
-} else {
-    console.log(`não é múltiplo`);
+converterEAlertar(valor, deMoeda);
 }
