@@ -24,4 +24,4 @@ const percentualDesconto = 10; // Percentual de desconto aplicado
 const aliquotaICMS = 18; // Alíquota do ICMS em %
 
 const valorFinal = calcularValorFinal(precoProduto, percentualDesconto, aliquotaICMS);
-console.log("Valor Final da Mercadoria com ICMS: R$", valorFinal.toFixed(2));
+console.log("Valor Final da Mercadoria com ICMS: R$", valorFinal);
