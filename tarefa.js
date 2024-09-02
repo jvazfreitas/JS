@@ -18,7 +18,6 @@ function calcularValorFinal(precoProduto, percentualDesconto, aliquotaICMS) {
     return valorFinal;
 }
 
-// Exemplos de uso das funções
 const precoProduto = 1000; // Preço do produto em reais
 const percentualDesconto = 10; // Percentual de desconto aplicado
 const aliquotaICMS = 18; // Alíquota do ICMS em %
